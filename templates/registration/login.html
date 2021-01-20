@@ -1,0 +1,38 @@
+  
+{% extends "base.html" %}
+
+{% block body%}
+
+
+    <section class="ftco-section">
+<div class = "container-field">
+
+    <div class="text-center"><h1><strong> Prijavite se</strong></h1>
+    Nemate račun? <a href="{% url 'register' %}" >Registrirajte se</a>
+    </div>
+    <br>
+
+
+        <div class = "col-md-4" style = "margin-left: 450px">
+            <form action="" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {% include "partials/basic_form.html" %}
+                <div class = "form-horizontal">
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary p-3 px-xl-4 py-xl-3">PRIJAVA</button>
+                    </div>
+                </div>
+            </form>
+            </center>
+
+
+
+    </div>
+
+</div>
+    </section>
+
+
+
+
+{% endblock %}

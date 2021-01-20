@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% load static %}
+{% block body %}
+
+
+    <section class="ftco-section" style="max-height: 600px">
+
+
+
+        <div class="container">
+    		<div class="row">
+    			<div class="col-lg-6 mb-5 ftco-animate">
+    				<a href="{{ podaci.slika }}" class="image-popup"><img src="{{ podaci.slika }}" class="img-fluid" alt="Slika" style="width: 500px; height: 500px;"></a>
+    			</div>
+    			<div class="col-lg-6 product-details pl-md-5 ftco-animate">
+    				<h3>{{ podaci.naziv }} </h3>
+    				<p class="price" ><span style="font-size: 10pt"> Tagovi: <a href="{% url 'kolekcija:Tag' podaci.tags.0 %}" >{{ podaci.tags.0 }}</a>, <a href="{% url 'kolekcija:Tag' podaci.tags.1 %}" >{{ podaci.tags.1 }}</a>, <a href="{% url 'kolekcija:Tag' podaci.tags.2 %}" >{{ podaci.tags.2 }}</a></span></p>
+    				<p> {{ podaci.summary }} </p>
+                    <p class="price" ><span style="font-size: 10pt">Slušatelja: {{ podaci.listeners }}</span></p>
+                    {%  if podaci.baza  %}
+                        <p><a href="{% url 'kolekcija:Izbrisi izvodaca' podaci.naziv %}" class="btn btn-primary btn-outline-primary">Izbriši iz moje kolekcije</a></p>
+                    {% else %}
+                        <p><a href="{% url 'kolekcija:Dodaj_izvodaca' podaci.naziv %}" class="btn btn-primary btn-outline-primary">Dodaj u moju kolekciju</a></p>
+                    {% endif %}
+                    {%  if podaci.baza  %}
+                        {% if podaci.lajkan %}
+                            <p><a href="{% url 'kolekcija:like_izvodac' podaci.naziv %}" class="btn btn-primary btn-outline-primary">Ne sviđa mi se</a></p>
+                        {% else %}
+                            <p><a href="{% url 'kolekcija:like_izvodac' podaci.naziv %}" class="btn btn-primary btn-outline-primary">Sviđa mi se</a></p>
+                        {% endif %}
+                     {% endif %}
+
+                </div>
+            </div>
+        </div></section>
+
+
+
+    <section class="ftco-section">
+    	<div class="container">
+    		<div class="row justify-content-center mb-5 pb-3">
+          <div class="col-md-7 heading-section ftco-animate text-center">
+          	<span class="subheading">Slični izvođači</span>
+            </div>
+        </div>
+        <div class="row">
+        	<div class="col-md-3">
+        		<div class="menu-entry">
+    					<a href="{{ podaci.slicni.0 }}" class="img" style=" background-image: url({{podaci.slike.0}});"></a>
+    					<div class="text text-center pt-4">
+    						<h3>{{ podaci.slicni.0 }}</h3>
+    						<p><a href="{{ podaci.slicni.0 }}" class="btn btn-primary btn-outline-primary">Pregledaj</a></p>
+    					</div>
+    				</div>
+        	</div>
+        	<div class="col-md-3">
+        		<div class="menu-entry">
+    					<a href="{{ podaci.slicni.1 }}" class="img" style="background-image: url({{podaci.slike.1}});"></a>
+    					<div class="text text-center pt-4">
+    						<h3>{{ podaci.slicni.1 }}</h3>
+    						<p><a href="{{ podaci.slicni.1 }}" class="btn btn-primary btn-outline-primary">Pregledaj</a></p>
+    					</div>
+    				</div>
+        	</div>
+        	<div class="col-md-3">
+        		<div class="menu-entry">
+    					<a href="{{ podaci.slicni.2 }}" class="img" style="background-image: url({{podaci.slike.2}});"></a>
+    					<div class="text text-center pt-4">
+    						<h3>{{ podaci.slicni.2 }}</h3>
+    						<p><a href="{{ podaci.slicni.2 }}" class="btn btn-primary btn-outline-primary">Pregledaj</a></p>
+    					</div>
+    				</div>
+        	</div>
+        	<div class="col-md-3">
+        		<div class="menu-entry">
+    					<a href="{{ podaci.slicni.2 }}" class="img" style="background-image: url({{podaci.slike.3}});"></a>
+    					<div class="text text-center pt-4">
+    						<h3>{{ podaci.slicni.3 }}</h3>
+    						<p><a href="{{ podaci.slicni.3 }}" class="btn btn-primary btn-outline-primary">Pregledaj</a></p>
+    					</div>
+    				</div>
+        	</div>
+        </div>
+    	</div>
+    </section>
+
+{% endblock body %}

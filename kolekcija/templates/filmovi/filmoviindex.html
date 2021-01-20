@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block body %}
+
+    bla bla stranica za filmove
+{% for film in object_list %}
+    <br>
+    <a href="{% url 'filmovi:filmovi-detail' film.id %}">{{film.ime_filma}}</a>
+    <br>
+{% endfor %}
+{% endblock body %}

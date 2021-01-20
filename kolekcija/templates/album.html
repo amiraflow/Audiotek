@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load static %}
+{% block body %}
+
+
+    <section class="ftco-section" style="max-height: 600px">
+        <div class="container">
+    		<div class="row">
+    			<div class="col-lg-6 mb-5 ftco-animate">
+    				<a href="{{ podaci.slika }}" class="image-popup"><img src="{{ podaci.slika }}" class="img-fluid" alt="Slika" style="width: 450px; height: 450px;"></a>
+    			</div>
+    			<div class="col-lg-6 product-details pl-md-5 ftco-animate">
+    				<h3>{{ podaci.naziv }} </h3>
+    				<p class="price" ><span style="font-size: 12pt"> <a href="{% url 'kolekcija:Izvodac' podaci.izvodac %}" >{{ podaci.izvodac }}</a> </span></p>
+                    <p class="price" ><span style="font-size: 10pt"> Tagovi: <a href="{% url 'kolekcija:Tag' podaci.tagovi.0 %}" >{{ podaci.tagovi.0 }}</a>, <a href="{% url 'kolekcija:Tag' podaci.tagovi.1 %}" >{{ podaci.tagovi.1 }}</a>, <a href="{% url 'kolekcija:Tag' podaci.tagovi.2 %}" >{{ podaci.tagovi.2 }}</a></span></p>
+
+    				<p> {{ podaci.kratkiopis }} </p>
+                    <p class="price" ><span style="font-size: 10pt">Slušatelja: {{ podaci.listeners }}</span> &nbsp; &nbsp;  &nbsp;  <span style="font-size: 10pt">Puštanja: {{ podaci.plays }}</span></p>
+
+                    {%  if podaci.baza  %}
+                        <p><a href="{% url 'kolekcija:Izbrisi album' podaci.izvodac podaci.naziv %}" class="btn btn-primary btn-outline-primary">Izbriši iz moje kolekcije</a></p>
+                    {% else %}
+                        <p><a href="{% url 'kolekcija:Dodaj album' podaci.izvodac podaci.naziv %}" class="btn btn-primary btn-outline-primary">Dodaj u moju kolekciju</a></p>
+                    {% endif %}
+
+                </div>
+            </div>
+        </div>
+
+
+    </section>
+<section class="ftco-about d-md-flex" style="margin-left: 600px;">
+    	<div class="one-half ftco-animate">
+    		<div class="overlap" >
+	        <div class="heading-section ftco-animate " >
+	        	<span class="subheading">Popis pjesama</span>
+	          	        </div>
+	        <div>
+                <br><br>
+            <ol>
+                {% for i in podaci.pjesmas %}
+                    <li>&nbsp; &nbsp;  &nbsp;&nbsp; &nbsp;  &nbsp;&nbsp; &nbsp;  &nbsp;<a href="{% url 'kolekcija:Pjesma' podaci.izvodac i %}">{{ i }}</a> <br/>
+                {% endfor %}
+            </ol>
+
+            </div>
+  			</div>
+    	</div>
+    </section>
+
+{% endblock body %}

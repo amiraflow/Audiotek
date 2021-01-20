@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load static %}
+{% block body %}
+
+        <section class="ftco-section" style="background-image: url({% static 'images/kaseta.png'%});">
+    	<div class="container">
+           <center><h1 style="color:white">Pretraga po lokaciji</h1>
+
+      <p class="lead text-muted" style="color:black">Unesite (na engleskom) ime države da vidite šta ste u njoj najviše sluša</p>
+      <form method="POST"  class="contact-form">
+      <div class="form-group">
+          {% csrf_token %}
+          <input type="text" name="search" class="form-control" aria-label="Username">
+      </div>
+      <p>
+        <button type="submit" name="submit" value="search" class="btn btn-primary my-2">Pretraži</button>
+        <button type="submit" name="submit" value="lucky" class="btn btn-secondary my-2">Osjećam se sretno</button>
+      </p>
+      </form>
+               </center>
+    </div>
+  </section>
+    {% if provjera %}
+  <div class="album py-5 bg-light">
+    <div class="container">
+      <div class="row">
+        {% for artist in artists %}
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <img class="bd-placeholder-img card-img-top" width="350px" height="350px" src="{{ artist.slika }}" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"></img>
+            <div class="card-body">
+              <p class="card-text"> {{artist.naziv}}</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <a type="button" href="{% url 'kolekcija:Izvodac' artist.naziv %}" class="btn btn-sm btn-outline-secondary">Pregledaj</a>
+                </div>
+                <small class="text-muted">  {{artist.listeners}} slušatelja</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+    {% endif %}
+{% endblock body %}

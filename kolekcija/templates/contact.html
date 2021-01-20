@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block body%}
+
+     <section class="ftco-section contact-section">
+     <p style="margin-left: 600px">{{ poruka }}</p>
+      <div class="container mt-5">
+        <div class="row block-9">
+					<div class="col-md-4 contact-info ftco-animate">
+						<div class="row">
+							<div class="col-md-12 mb-4">
+	              <h2 class="h4">Kontaktirajte nas</h2>
+	            </div>
+	            <div class="col-md-12 mb-3">
+	              <p><span>Adresa:</span> 221B Baker Street, 77 000 Bihać, Bosna i Hercegovina</p>
+	            </div>
+	            <div class="col-md-12 mb-3">
+	              <p><span>Telefon:</span> <a href="tel://07700 900461">07700 900461</a></p>
+	            </div>
+	            <div class="col-md-12 mb-3">
+	              <p><span>Email:</span> <a href="mailto:audiotekaAmira@gmail.com">audioteka@audioteka.com</a></p>
+	            </div>
+	            <div class="col-md-12 mb-3">
+	              <p><span>Website:</span> <a href="#">audioteka.com</a></p>
+	            </div>
+						</div>
+					</div>
+					<div class="col-md-1"></div>
+         <div class="col-md-6 ftco-animate">
+            <form action="{% url 'kolekcija:Kontakt' %}" class="contact-form" method="post">
+                {% csrf_token %}
+            	<div class="row">
+            		<div class="col-md-6">
+	                <div class="form-group">
+	                  <input type="text" name = "message_name" class="form-control" placeholder="Ime">
+	                </div>
+                </div>
+                <div class="col-md-6">
+	                <div class="form-group">
+	                  <input type="text" name = "message_email" class="form-control" placeholder="Email">
+	                </div>
+	                </div>
+              </div>
+              <div class="form-group">
+                <input type="text" name = "message_subject" class="form-control" placeholder="Subjekt">
+              </div>
+              <div class="form-group">
+                <textarea name="message" id="" cols="30" rows="7" class="form-control"  placeholder="Poruka"></textarea>
+              </div>
+              <div class="form-group">
+                <input type="submit" value="Pošalji" class="btn btn-primary py-3 px-5">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+{% endblock %}

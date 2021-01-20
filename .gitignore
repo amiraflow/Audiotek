@@ -1,0 +1,23 @@
+# File types #
+##############
+*.pyc
+*.swo
+*.swp
+*.swn
+
+# Directories #
+###############
+logs/
+
+# Specific files #
+##################
+KINESTAR/settings.py
+db.sqlite3
+/lib
+/media
+.env
+/include
+/reports
+.DS_Store
+__pycache__/
+log.django

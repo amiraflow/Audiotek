@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+{% block body %}
+
+<div class = "filmcontainer">
+
+<div class = "kompaktna">
+
+
+</div>
+</div>
+  </br>
+  <table>
+  <tr>
+  <td><img src="{{ film.slika.url }}" class="filmslika" alt="{{ film.ime_filma }}" > </td>
+  <td class = "filmtabela"> <span class="sp-sub-title">{{ film.ime_filma }}</span>
+					<h3 class="film_podnaslov">Podaci o filmu</h3>
+					<p>
+  Datum početka prikazivanja:   </br>
+  Žanr: {{ film.zanr }} </br>
+  Redatelj: {{ film.redatelj }} </br>
+  Glumci:  {{ film.glumci }} </br>
+  Trajanje: {{ film.trajanje }}
+  </p>
+  </br>
+
+
+
+  <h4 class = "film_podpodnaslov">Ukratko:</h4>
+  <p>
+ {{ film.opis }}
+
+  </br>
+  </p>
+  </td>
+
+  </tr>
+
+  </table>
+
+
+
+  	  </br>
+  	    </br>
+
+  	    <div class = "filmcontainer">
+  <h4 class = "film_podpodnaslov">Kupite ulaznicu:</h4>
+
+  </br>
+  <!--Table-->
+<table id="tablePreview" class="table">
+<!--Table head-->
+  <thead>
+    <tr>
+    <th>#</th>
+      <th>Ponedjeljak</th>
+      <th>Utorak</th>
+      <th>Srijeda</th>
+      <th>Četvrtak</th>
+      <th>Petak</th>
+      <th>Subota</th>
+      <th>Nedjelja</th>
+    </tr>
+  </thead>
+  <!--Table head-->
+  <!--Table body-->
+  <tbody>
+    <tr>
+
+
+      <th>2D</th>
+      <td><button type="button" class="btn btn-dark" onclick = "">19:00 <br> 6 KM</button></td>
+      <td><a href="#" class="btn btn-dark" role="button">19:00 <br> 6 KM</button></a></td>
+      <td><a href="#" class="btn btn-dark" role="button">20:00 <br> 5 KM</button></a></td>
+      <td><a href="#" class="btn btn-dark" role="button">19:00 <br> 6 KM</button></a></td>
+      <td><a href="#" class="btn btn-dark" role="button">19:00 <br> 6 KM</button></a></td>
+      <td><a href="#" class="btn btn-dark" role="button">20:00 <br> 7 KM</button></a></td>
+      <td><a href="#" class="btn btn-dark" role="button">20:00 <br> 5 KM</button></a></td>
+    </tr>
+    <tr>
+      <th>3D</th>
+       <td><a href="#" class="btn btn-dark" role="button">20:00 <br> 7 KM</button></a></td>
+      <td><a href="#" class="btn btn-dark" role="button">21:00 <br> 7 KM</button></a></td>
+      <td><a href="#" class="btn btn-dark" role="button">20:00 <br> 5 KM</button></a></td>
+      <td><a href="#" class="btn btn-dark" role="button">22:00 <br> 7 KM</button></a></td>
+      <td><a href="#" class="btn btn-dark" role="button">22:00 <br> 7 KM</button></a></td>
+      <td><a href="#" class="btn btn-dark" role="button">21:00 <br> 8 KM</button></a></td>
+      <td><a href="#" class="btn btn-dark" role="button">23:00 <br> 5 KM</button></a></td>
+    </tr>
+  </tbody>
+  <!--Table body-->
+</table>
+<!--Table-->
+
+  <div class = "paralaks" data-stellar-background-ratio="0.5">
+
+
+</div>
+
+
+  </div>
+
+
+
+{% endblock body %}
+
+

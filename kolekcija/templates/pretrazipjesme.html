@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% load static %}
+{% block body %}
+    <!-- Bootstrap core CSS -->
+     <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    <!-- Custom styles for this template -->
+
+
+        <section class="ftco-section" style="background-image: url({% static 'images/pinki.png'%});">
+    	<div class="container">
+           <center><h1 style="color:white">Pretraga pjesama</h1>
+
+      <p class="lead text-muted" style="color:black">Unesite ime ili izvođača od pjesme koju želite pronaći</p>
+      <form method="POST"  class="contact-form">
+      <div class="form-group">
+          {% csrf_token %}
+          <input type="text" name="search" class="form-control" aria-label="Username">
+      </div>
+      <p>
+        <button type="submit" name="submit" value="search" class="btn btn-primary my-2">Pretraži</button>
+        <button type="submit" name="submit" value="lucky" class="btn btn-secondary my-2">Osjećam se sretno</button>
+      </p>
+      </form>
+               </center>
+    </div>
+  </section>
+
+    {% if provjera %}
+  <div class="album py-5 bg-light">
+    <div class="container">
+      <div class="row">
+        {% for track in tracks %}
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <img class="bd-placeholder-img card-img-top" width="100%" height="100%" src="{{track.slika}}" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"></img>
+            <div class="card-body" style="align-content: center">
+              <p class="card-text"> {{track.izvodac}} - {{track.naziv}}</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                    <a type="button" href="{% url 'kolekcija:Pjesma' track.izvodac track.naziv %}" class="btn btn-sm btn-outline-secondary">Pregledaj</a>
+                </div>
+                <small class="text-muted">{{ track.listeners }} slušatelja</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+    {% endif %}
+{% endblock body %}

@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% load static %}
+{% block body %}
+
+<section class="home-slider owl-carousel">
+      <div class="slider-item" style="background-image: url({% static 'images/cura.jpg'%});">
+      	<div class="overlay"></div>
+        <div class="container">
+          <div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
+
+            <div class="col-md-8 col-sm-12 text-center ftco-animate">
+            	<span class="subheading">Dobrodošli</span>
+              <h1 class="mb-4">Sva Vaša muzika na jednom mjestu</h1>
+              <p class="mb-4 mb-md-5">Nikad više nećete zaboraviti pjesme koje su Vam se svidjele.</p>
+              {% if request.user.is_authenticated %}
+                <p><a href="{% url 'users:kolekcija' request.user.username %}" class="btn btn-primary p-3 px-xl-4 py-xl-3">Moja kolekcija</a> <a href="{% url "kolekcija:Pjesme" %}" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">Pronađi muziku</a></p>
+                {% else %}
+                 <p><a href="{% url 'login' %}" class="btn btn-primary p-3 px-xl-4 py-xl-3">Moja kolekcija</a> <a href="{% url "kolekcija:Pjesme" %}" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">Pronađi muziku</a></p>
+                {% endif %}</div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="slider-item" style="background-image: url({% static 'images/original.jpg'%});">
+      	<div class="overlay"></div>
+        <div class="container">
+          <div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
+
+            <div class="col-md-8 col-sm-12 text-center ftco-animate">
+            	<span class="subheading">Dobrodošli</span>
+              <h1 class="mb-4">Sva Vaša muzika na jednom mjestu</h1>
+              <p class="mb-4 mb-md-5">Otkrijte Vaš novi omiljeni bend</p>
+              {% if request.user.is_authenticated %}
+                <p><a href="{% url 'users:kolekcija' request.user.username %}" class="btn btn-primary p-3 px-xl-4 py-xl-3">Moja kolekcija</a> <a href="{% url "kolekcija:Izvodaci" %}" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">Pronađi muziku</a></p>
+                {% else %}
+                 <p><a href="{% url 'login' %}" class="btn btn-primary p-3 px-xl-4 py-xl-3">Moja kolekcija</a> <a href="{% url "kolekcija:Izvodaci" %}" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">Pronađi muziku</a></p>
+                {% endif %}</div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="slider-item" style="background-image: url({% static 'images/records.jpg'%});">
+      	<div class="overlay"></div>
+        <div class="container">
+          <div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
+
+            <div class="col-md-8 col-sm-12 text-center ftco-animate">
+            	<span class="subheading">Dobrodošli</span>
+              <h1 class="mb-4">Sva Vaša muzika na jednom mjestu</h1>
+              <p class="mb-4 mb-md-5">Držite sve Vaše albume na istoj polici</p>
+                {% if request.user.is_authenticated %}
+                <p><a href="{% url 'users:kolekcija' request.user.username %}" class="btn btn-primary p-3 px-xl-4 py-xl-3">Moja kolekcija</a> <a href="{% url "kolekcija:Albumi" %}" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">Pronađi muziku</a></p>
+                {% else %}
+                 <p><a href="{% url 'login' %}" class="btn btn-primary p-3 px-xl-4 py-xl-3">Moja kolekcija</a> <a href="{% url "kolekcija:Albumi" %}" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">Pronađi muziku</a></p>
+                {% endif %}
+              </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+{% endblock body %}

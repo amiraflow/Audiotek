@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load static %}
+{% block body %}
+
+
+    <section class="ftco-section" style="padding-bottom: 0px;"  >
+        <div class="container">
+
+    				<h3>{{ podaci.naziv }} </h3>
+
+    				<p> {{ podaci.dugiopis }} </p>
+                    <p class="price" ><span style="font-size: 10pt">Slušatelja: {{ podaci.reach }}</span> &nbsp; &nbsp;  &nbsp;  <span style="font-size: 10pt">Puštanja: {{ podaci.total }}</span></p>
+
+
+                </div>
+
+    </section>
+
+
+
+    <section class="ftco-section ftco-cart" style="padding-top: 0px">
+
+			<div class="container">
+            <div class="col-md-7 heading-section ftco-animate text-center">
+          	<span class="subheading" style="padding-left: 450px">Najslušaniji albumi</span>
+            </div>
+            <table class="table table-hover table-bordered">
+            <tbody>
+                {% for i in podaci.topalbums %}
+                <tr>
+                    <td> {{ i.broj }} </td>
+                    <td> <img src="{{i.slika}}" style="width: 200px; height: 200px"></td>
+                    <td><a href="{% url 'kolekcija:Izvodac' i.izvodac %}">{{ i.izvodac }} </a></td>
+                <td><a href="{% url 'kolekcija:Album' i.izvodac i.naziv %}"> {{ i.naziv  }}</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+            </table>
+
+
+			</div>
+		</section>
+
+
+{% endblock body %}

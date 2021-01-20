@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% block body %}
+
+
+
+<section class="ftco-section" style="padding-bottom: 0pt" >
+    	<div class="container">
+    		<div class="row justify-content-center mb-5 pb-3">
+          <div class="col-md-7 heading-section ftco-animate text-center">
+          	<span class="subheading">{{ rijec }} korisnika {{ kor }}</span>
+            </div>
+        </div>
+        {% ifequal rijec "Izvođači" %}
+        <div class="row">
+            {% for i in izvodacs %}
+        	<div class="col-md-3">
+        		<div class="menu-entry">
+    					<a href="{{ i.naziv }}" class="img" style=" background-image: url({{i.slika}});"></a>
+    					<div class="text text-center pt-4">
+    						<h3>{{ i.naziv }}</h3>
+
+    						<p><a href="{% url 'kolekcija:Izvodac' i.naziv %}" class="btn btn-primary btn-outline-primary">Pregledaj</a><a href="{% url 'kolekcija:urediizvodaca' kor i.naziv %}" class="btn btn-primary btn-outline-primary">Uredi</a></p>
+                            <p>{{ i.opis }}</p>
+
+    					</div>
+    				</div>
+                 	</div>
+        {% endfor %}
+        </div>
+        {% endifequal %}
+
+
+            {% ifequal rijec "Pjesme" %}
+        <div class="row">
+            {% for i in izvodacs %}
+        	<div class="col-md-3">
+        		<div class="menu-entry">
+    					<a href="{% url "kolekcija:Pjesma" i.izvodac i.naziv %}" class="img" style=" background-image: url({{i.slika}});"></a>
+    					<div class="text text-center pt-4">
+    						<h3>{{ i.naziv }}</h3>
+
+    						<p><a href="{% url "kolekcija:Pjesma" i.izvodac i.naziv %}" class="btn btn-primary btn-outline-primary">Pregledaj</a><a href="{% url "kolekcija:uredipjesmu" kor i.izvodac i.naziv %}" class="btn btn-primary btn-outline-primary">Uredi</a></p>
+                            <p>{{ i.opis }}</p>
+
+    					</div>
+    				</div>
+                 	</div>
+        {% endfor %}
+                 </div>
+        {% endifequal %}
+
+        {% ifequal rijec "Albumi" %}
+        <div class="row">
+            {% for i in izvodacs %}
+        	<div class="col-md-3">
+        		<div class="menu-entry">
+    					<a href="{% url "kolekcija:Album" i.izvodac i.naziv %}" class="img" style=" background-image: url({{i.slika}});"></a>
+    					<div class="text text-center pt-4">
+    						<h3>{{ i.naziv }}</h3>
+
+    						<p><a href="{% url "kolekcija:Album" i.izvodac i.naziv %}" class="btn btn-primary btn-outline-primary">Pregledaj</a><a href="{% url "kolekcija:uredialbum" kor i.izvodac i.naziv %}" class="btn btn-primary btn-outline-primary">Uredi</a></p>
+                            <p>{{ i.opis }}</p>
+
+    					</div>
+    				</div>
+                 	</div>
+        {% endfor %}
+                 </div>
+        {% endifequal %}
+
+
+
+
+    </section>
+{% endblock body %}

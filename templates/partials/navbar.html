@@ -1,0 +1,44 @@
+	<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+	    <div class="container">
+	      <a class="navbar-brand" href="{% url 'kolekcija:index' %}">AUDIOTEKA<small>servis</small></a>
+	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="oi oi-menu"></span> Menu
+	      </button>
+	      <div class="collapse navbar-collapse" id="ftco-nav">
+	        <ul class="navbar-nav ml-auto">
+	          <li class="nav-item active"><a href="{% url 'kolekcija:index' %}" class="nav-link">Početna</a></li>
+	          	          <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pretraga</a>
+              <div class="dropdown-menu" aria-labelledby="dropdown04">
+              	<a class="dropdown-item" href="{% url 'kolekcija:Izvodaci' %}">Izvođači</a>
+                <a class="dropdown-item" href="{% url 'kolekcija:Albumi' %}">Albumi</a>
+                <a class="dropdown-item" href="{% url 'kolekcija:Pjesme' %}">Pjesme</a>
+                <a class="dropdown-item" href="{% url 'kolekcija:Lokacija' %}">Po lokaciji</a>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Top lista</a>
+              <div class="dropdown-menu" aria-labelledby="dropdown04">
+              	<a class="dropdown-item" href="{% url 'kolekcija:Top lista izvodaca' %}">Top lista izvođača</a>
+                <a class="dropdown-item" href="{% url 'kolekcija:Top lista pjesama' %}">Top lista pjesama</a>
+              </div>
+            </li>
+            <li class="nav-item"><a href="{% url 'kolekcija:about' %}" class="nav-link">O nama</a></li>
+	          <li class="nav-item"><a href="{% url 'kolekcija:Kontakt' %}" class="nav-link">Kontakt</a></li>
+                {% if user.is_authenticated %}
+                    <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{user.username}}</a>
+              <div class="dropdown-menu" aria-labelledby="dropdown04">
+              	<a class="dropdown-item" href="{% url 'users:profil' %}">Moj profil</a>
+                <a class="dropdown-item" href="{% url 'users:kolekcija' user.username %}">Moja kolekcija</a>
+                  <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+              </div>
+            </li>
+                {% else %}
+                 <li class="nav-item"><a href="{% url 'login' %}" class="nav-link">Login</a></li>
+                {% endif %}
+	          </ul>
+	      </div>
+		  </div>
+	  </nav>
+    <!-- END nav -->
